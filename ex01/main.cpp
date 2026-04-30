@@ -1,24 +1,22 @@
 #include "Phonebook.hpp"
 
+
+
 int main(int argc, char **argv) 
 {
     std::string input;
 
-    if (argc == 2)
+    Phonebook();
+    while (true)
     {
-        if (std::string(argv[1]) == "EXIT")
-            return 0;
-        else if (std::string(argv[1]) == "ADD")
-        {
+        std::cout << "Please enter your command (Choose one of these three: 'ADD', 'SEARCH', 'EXIT'):" << std::endl;
+        std::getline(std::cin, input);
 
-        }
-        else if (std::string(argv[1]) == "SEARCH")
-        {
-            
-        }
+        if (input == "EXIT")
+            return 0;
+        else if (input == "ADD")
+        else if (input == "SEARCH")
     }
-    while ()
-        std::cout << "Please enter your command." << std::endl;
 
     return 0;
 }

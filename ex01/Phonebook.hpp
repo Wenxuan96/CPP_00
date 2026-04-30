@@ -12,7 +12,7 @@ class Phonebook
 		Contact contacts[8];
 	public:
 		Phonebook();
-		void addContact(const Contact&name, int n);
+		void addContact(const Contact&contactInfo, int n);
 		void overwriteContact(const Contact&name);
 		int	numOfContacts() const;
 };
