@@ -13,8 +13,9 @@ class Phonebook
 	public:
 		Phonebook();
 		void addContact(const Contact&contactInfo, int n);
-		void overwriteContact(const Contact&name);
+		void overwriteContact(const Contact&contactInfo, int n);
 		int	numOfContacts() const;
+		Contact getContact(int n) const;
 };
 
 #endif

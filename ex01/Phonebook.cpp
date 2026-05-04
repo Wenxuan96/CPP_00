@@ -11,9 +11,14 @@ void Phonebook::addContact(const Contact&contactInfo, int n)
 	contacts[n] = contactInfo;
 }
 
-void Phonebook::overwriteContact(const Contact&contactInfo)
+void Phonebook::overwriteContact(const Contact&contactInfo, int n)
 {
-	contacts[0] = contactInfo;
+	contacts[n] = contactInfo;
+}
+
+Contact Phonebook::getContact(int n) const
+{
+	return contacts[n];
 }
 
 int	Phonebook::numOfContacts() const
@@ -22,5 +27,5 @@ int	Phonebook::numOfContacts() const
 
 	while(contacts[i].getFirstName() != "")
 		i++;
-	return i - 1;
+	return i;
 }
