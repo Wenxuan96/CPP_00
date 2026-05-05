@@ -76,23 +76,26 @@ std::string format(std::string txt)
 
 void displayAll(Phonebook&newPhonebook)
 {
+    int count = newPhonebook.numOfContacts();
+
     std::cout << std::right << std::setw(10) << "index" << "|"
               << std::right << std::setw(10) << "first name" << "|"
               << std::right << std::setw(10) << "last name" << "|"
               << std::right << std::setw(10) << "nickname" << "|" << std::endl;
     std::cout << "---------------------------------------------" << std::endl;
-    for (int i = 0; i < 8; i++)
+
+    for (int i = 0; i <= count - 1; i++)
     {
-        if (newPhonebook.getContact(i).getFirstName() == "")
+        if (i == 8)
             break;
-        std::cout << std::right << std::setw(10) << i << "|"
+        std::cout << std::right << std::setw(10) << i + 1 << "|"
                   << std::right << std::setw(10) << format(newPhonebook.getContact(i).getFirstName()) << "|"
                   << std::right << std::setw(10) << format(newPhonebook.getContact(i).getLastName()) << "|"
                   << std::right << std::setw(10) << format(newPhonebook.getContact(i).getNickname()) << "|" << std::endl;
     }
 }
 
-void prtSearch(int index, Phonebook newPhonebook)
+void prtSearch(int index, Phonebook&newPhonebook)
 {
     Contact searchResult;
 
@@ -144,7 +147,8 @@ int main(int argc, char **argv)
                     continue;
                 }
                 index = std::stoi(strIndex);
-                if (index < 1 || index > newPhonebook.numOfContacts())
+                std::cout << "Number of contacts: " << newPhonebook.numOfContacts() << std::endl;
+                if (index < 1 || index > newPhonebook.numOfContacts() || index == 9)
                 {
                     std::cout << "Index out of range!" << std::endl;
                     continue;
