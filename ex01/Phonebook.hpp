@@ -18,4 +18,9 @@ class Phonebook
 		Contact getContact(int n) const;
 };
 
+std::string format(std::string txt);
+bool isNumber(const std::string& s);
+std::string validateNumber();
+std::string validateInput();
+
 #endif

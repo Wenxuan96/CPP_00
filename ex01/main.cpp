@@ -1,50 +1,6 @@
 #include "Phonebook.hpp"
 #include <iostream>
 
-std::string validateInput()
-{
-    std::string input;
-
-    while (true)
-    {
-        if (!std::getline(std::cin, input))   // Ctrl+D
-            exit(0);
-
-        if (!input.empty())
-            return input;
-
-        std::cout << "Invalid input, enter again: ";
-    }
-}
-
-bool isNumber(const std::string& s)
-{
-    if (s.empty() || s.length() > 15)
-        return false;
-
-    for (size_t i = 0; i < s.length(); i++)
-        if (!std::isdigit(s[i]))
-            return false;
-
-    return true;
-}
-
-std::string validateNumber()
-{
-    std::string input;
-
-    while (true)
-    {
-        if (!std::getline(std::cin, input))   // Ctrl+D
-            exit(0);
-
-        if (!input.empty() && isNumber(input))
-            return input;
-
-        std::cout << "Expecting no more than 15 numeric values, enter again: ";
-    }
-}
-
 Contact createContact(void)
 {
     Contact newcontact;
@@ -65,13 +21,6 @@ Contact createContact(void)
     newcontact.setSecret(validateInput());
 
     return newcontact;
-}
-
-std::string format(std::string txt)
-{
-    if (txt.length() > 10)
-        return txt.substr(0, 9) + ".";
-    return txt;
 }
 
 void displayAll(Phonebook&newPhonebook)
@@ -135,7 +84,8 @@ int main(int argc, char **argv)
 
             std::string strIndex;
             int index;
-
+            if (newPhonebook.numOfContacts() == 0)
+                continue;
             while (true)
             {
                 std::cout << "Please type an index number to display the contact person: ";
@@ -147,7 +97,6 @@ int main(int argc, char **argv)
                     continue;
                 }
                 index = std::stoi(strIndex);
-                std::cout << "Number of contacts: " << newPhonebook.numOfContacts() << std::endl;
                 if (index < 1 || index > newPhonebook.numOfContacts() || index == 9)
                 {
                     std::cout << "Index out of range!" << std::endl;
