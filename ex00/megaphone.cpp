@@ -13,8 +13,10 @@ int main(int argc, char **argv)
 	
 	for (int i = 1; i < argc; i++)
 	{
-		for (int j = 0; argv[i][j]!= '\0'; j++)
-			std::cout << (char)std::toupper(argv[i][j]);
+		std::string message(argv[i]);
+		for (size_t j = 0; j < message.length(); j++)
+			message[j] = std::toupper(message[j]);
+		std::cout << message;
 	}
 	std::cout << std::endl;
 	return 0;

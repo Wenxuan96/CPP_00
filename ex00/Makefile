@@ -4,17 +4,20 @@ C++ = c++
 C++FLAGS = -Wall -Wextra -Werror
 
 SRCS = megaphone.cpp
-OBJS = $(SRCS:.cpp=.o)
+OBJS = $(SRCS:%.cpp=%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(C++) $(C++FLAGS) $(OBJS) -o $(NAME)
 
+%.o: %.cpp
+	$(C++) $(C++FLAGS) -c $< -o $@
+
 clean:
-	rm -f $(OBJS) $(NAME)
+	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(OBJS) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
