@@ -56,13 +56,12 @@ void prtSearch(int index, Phonebook&newPhonebook)
     std::cout << "Dark secret: " << searchResult.getSecret() << std::endl;
 }
 
-int main(int argc, char **argv)
+int main()
 {
     std::string input;
     Phonebook newPhonebook;
     Contact newcontact;
     int numContact = -1;
-    int index;
 
     Phonebook();
     while (true)
@@ -85,7 +84,10 @@ int main(int argc, char **argv)
             std::string strIndex;
             int index;
             if (newPhonebook.numOfContacts() == 0)
+            {
+                std::cout << "Phonebook empty! Search only after adding at least on contact." << std::endl;
                 continue;
+            }
             while (true)
             {
                 std::cout << "Please type an index number to display the contact person: ";
@@ -96,7 +98,14 @@ int main(int argc, char **argv)
                     std::cout << "Index must be a number!" << std::endl;
                     continue;
                 }
-                index = std::stoi(strIndex);
+                try
+                {
+                    index = std::stoi(strIndex);
+                }
+                catch (const std::exception& e)
+                {
+                    index = -1;
+                }
                 if (index < 1 || index > newPhonebook.numOfContacts() || index == 9)
                 {
                     std::cout << "Index out of range!" << std::endl;
